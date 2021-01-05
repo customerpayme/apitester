@@ -96,3 +96,24 @@ it("test store/bank endpoint(POST)", async (done) => {
   expect(response.body.message).toBe("Bank Details updated successfully");
   done();
 });
+
+// Update Store bank details
+it("test store/bank endpoint(PUT)", async (done) => {
+  const response = await request
+    .put(`/store/bank/update/${process.env.ACC_ID}`)
+    .set("Accept", "application/json")
+    .set("x-access-token", process.env.TOKEN)
+    .send({
+      store_id: process.env.STORE_ID,
+      account_name: process.env.ACCOUNT_NAME,
+      bank: process.env.BANK,
+      account_number: process.env.ACCOUNT_NUMBER,
+      country: process.env.COUNTRY,
+    });
+
+
+  expect(response.body.data.statusCode).toBe(200);
+  expect(response.body.success).toBe(true);
+  expect(response.body.message).toBe("operation successful");
+  done();
+});
