@@ -117,3 +117,21 @@ it("test store/bank endpoint(PUT)", async (done) => {
   expect(response.body.message).toBe("operation successful");
   done();
 });
+
+
+// Delete Store bank details
+it("test store/bank endpoint(DELETE)", async (done) => {
+  const response = await request
+    .delete(`/store/bank/delete/${process.env.ACC_ID_DELETED}`)
+    .set("Accept", "application/json")
+    .set("x-access-token", process.env.TOKEN)
+    .send({
+      store_id: process.env.STORE_ID,
+    });
+
+
+  expect(response.body.data.statusCode).toBe(200);
+  expect(response.body.success).toBe(true);
+  expect(response.body.message).toBe("operation successful");
+  done();
+});
