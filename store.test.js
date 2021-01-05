@@ -39,7 +39,6 @@ it("test store endpoint(GET)", async (done) => {
   done();
 });
 
-
 // it("test store endpoint(PUT)", async (done) => {
 //   const response = await request
 //     .put("/store/update/")
@@ -61,3 +60,23 @@ it("test store endpoint(GET)", async (done) => {
 //   // expect(response.body.message).toBe("Store added successfully");
 //   done();
 // });
+
+it("test store/bank endpoint(POST)", async (done) => {
+  const response = await request
+    .post("/store/bank/")
+    .set("Accept", "application/json")
+    .set("x-access-token", process.env.TOKEN)
+    .send({
+      store_id: process.env.STORE_ID,
+      account_name: process.env.ACCOUNT_NAME,
+      bank: process.env.BANK,
+      bank_name: process.env.BANK_NAME,
+      account_number: process.env.ACCOUNT_NUMBER,
+      country: process.env.COUNTRY,
+    });
+
+  expect(response.body.data.statusCode).toBe(200);
+  expect(response.body.success).toBe(true);
+  expect(response.body.message).toBe("Bank Details updated successfully");
+  done();
+});
