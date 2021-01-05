@@ -1,12 +1,12 @@
 'use strict';
 //var requests = require('requests');
 var https = require('https');
-const register = function(phoneNumber, password, country, state){
-     if( typeof phoneNumber !== 'string' || typeof password !== 'string' || typeof country !== 'string' || typeof state !== 'string'){
+const register = function(email, password, country, state){
+     if( typeof email !== 'string' || typeof password !== 'string' || typeof country !== 'string' || typeof state !== 'string'){
         console.log("Incorrect arguments");
         return "Incorrect arguments"
     }
-    const user = JSON.stringify({phone_number: phoneNumber, 
+    const user = JSON.stringify({email: email, 
                              password: password,
                             country: country,
                             state: state});
@@ -48,12 +48,12 @@ const register = function(phoneNumber, password, country, state){
     
 }
 
-const recoverPwd = function (phoneNumber){
-    if( typeof phoneNumber !== 'string'){
+const recoverPwd = function (email){
+    if( typeof email !== 'string'){
         console.log("Incorrect arguments");
         return "Incorrect arguments"
     }
-    const user = JSON.stringify({phone_number: phoneNumber});
+    const user = JSON.stringify({email : email});
     const options = {
         hostname: 'staging.api.customerpay.me',
         path: "/recover",
