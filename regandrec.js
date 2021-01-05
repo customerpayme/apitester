@@ -1,12 +1,12 @@
 'use strict';
 //var requests = require('requests');
 var https = require('https');
-const register = function(email, password, country, state){
-     if( typeof email !== 'string' || typeof password !== 'string' || typeof country !== 'string' || typeof state !== 'string'){
+const register = function(phoneNumber, password, country, state){
+     if( typeof phoneNumber !== 'string' || typeof password !== 'string' || typeof country !== 'string' || typeof state !== 'string'){
         console.log("Incorrect arguments");
         return "Incorrect arguments"
     }
-    const user = JSON.stringify({email: email, 
+    const user = JSON.stringify({phone_number: phoneNumber, 
                              password: password,
                             country: country,
                             state: state});
@@ -48,12 +48,12 @@ const register = function(email, password, country, state){
     
 }
 
-const recoverPwd = function (email){
-    if( typeof email !== 'string'){
+const recoverPwd = function (phoneNumber){
+    if( typeof phoneNumber !== 'string'){
         console.log("Incorrect arguments");
         return "Incorrect arguments"
     }
-    const user = JSON.stringify({email : email});
+    const user = JSON.stringify({phone_number: phoneNumber});
     const options = {
         hostname: 'staging.api.customerpay.me',
         path: "/recover",
@@ -71,7 +71,7 @@ const recoverPwd = function (email){
             if( typeof data.data !== 'undefined'){
                if( data.data.statusCode == 200){
                 console.log("Recovery email sent successfully"); 
-                return "Recovery email sent successfully"
+                return "Recovery SMS sent successfully"
             } 
             }else if(data.error.code == 400){
                 console.error("User not found");

@@ -1,4 +1,4 @@
-# Test the Registeration and Recovery API with Email
+# Test the Registeration and Recovery API
 
 ### This test contains tests for the /register and /recover API endpoints of [customerpay.me](staging.api.customerpay.me)
 
@@ -14,9 +14,9 @@ var myTest = require('./regandrec');
 
 ## Registration test
 
-For the registration test, you will call the 'register()' function which takes the user's email, password, country and state respectively as strings e.g
+For the registration test, you will call the 'register()' function which takes the user's phone number, password, country and state respectively as strings e.g
 
-myTest.register('user@examplemail.com', 'p@$$w0rd' , 'Nigeria' , 'Imo');
+myTest.register('2349888888888', 'p@$$w0rd' , 'Nigeria' , 'Imo');
 
 If the user does not already exist, the function returns and logs the string "User registration successful".
 If the user already exists, it returns and logs the string "User already exists".
@@ -26,9 +26,9 @@ Otherwise it returns and logs the string "An unknown error occurred"
 
 ## Recovery test
 
-For the recovery test, you will call the 'recoverPwd()' function which takes the user's email, as string e.g
+For the recovery test, you will call the 'recoverPwd()' function which takes the user's phone number, as string e.g
 
-myTest.register('user@examplemail.com');
+myTest.register('2349888888888');
 
 If the user already exist, the function returns and logs the string "Recovery email sent successfully".
 If the user does not exist, it returns and logs the string "User not found".
