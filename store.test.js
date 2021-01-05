@@ -122,7 +122,7 @@ it("test store/bank endpoint(PUT)", async (done) => {
 // Delete Store bank details
 it("test store/bank endpoint(DELETE)", async (done) => {
   const response = await request
-    .delete(`/store/bank/delete/${process.env.ACC_ID_DELETED}`)
+    .delete(`/store/bank/delete/${process.env.ACC_ID_DELETE}`)
     .set("Accept", "application/json")
     .set("x-access-token", process.env.TOKEN)
     .send({
